@@ -41,6 +41,7 @@ M5flowプログラミング
 # Note  
 遊び方  
 <img src="https://user-images.githubusercontent.com/93046615/163826251-2352a741-c604-4bc1-bd8e-bb102daeaa17.png" width="800px">　　
+ ※現在は削除しています  
  
 # Author
 
