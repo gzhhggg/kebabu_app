@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" type="img/x-icon" href="../static/favicon.jpeg">
+    <title>回るチキンを立て削り！</title>
+    <link rel="stylesheet" href="../static/stylesheet.css">
+</head>
+<body>
+    <header>
+        <p class="header-title">回るチキンを立て削り！！！</p>
+    </header>
+
+    <div class="bg_img"></div>
+
+    <div class="wrapper">
+        <h2 class="wrapper-title"> ケバブの料金を計算するアプリ</h2>
+        <h3 class="explanation">ルール説明</h3>
+        <h4 class ="explanation_contents">
+            ケバブの回った回数で料金が変わります。<br>
+            回数×４７０円<br>
+            <font size="4" color="#ff0000">ただし、10回転目で射的に成功した場合は・・無料!!</font><br>
+            注文が終わったら更新ボタンを押して料金を確認してください。
+        </h4>
+        <form method="GET">
+            <input class="btn" value="料金確認" type="submit">
+        </form>
+        <hr class="cp_hr01" />
+
+        <div class="new_date">
+
+            <div class="new_date_contents">
+                {% if last_score == "10" %}
+                    <div class ="resutls_title">{{last_created}}にご注文されたお客様の支払い金額は・・・</div>
+                    <div class ="results_price">おめでとうございます！無料です！</div>    
+                    <div class ="results_contens">{{last_score}}回転 × 470円 = 無料！</div>    
+                    <div class ="results_message">またのご来店お待ちしております!</div>
+                {% else %}
+                    <div class ="resutls_title">{{last_created}}にご注文されたお客様の支払い金額は・・・</div>
+                    <div class ="results_price">{{last_price}}円です!!!</div>    
+                    <div class ="results_contens">{{last_score}}回転 × 470円 = {{last_price}}円</div>    
+                    <div class ="results_message">またのご来店お待ちしております!</div>
+                {% endif %}
+            </div>
+        </div>
+        
+        <div class = "date_lists">
+            <h2>注文履歴</h2>
+            <div class = "date_lists_children">
+                {% for d in data %}
+			        <p>No{{d.id}} : 回転数{{d.score_num}} : 金額{{d.price}} : 注文時刻{{d.created_at}}</p>
+		        {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <small class="last-text">ケバブの料金を計算するアプリ</small>
+    </footer>
+</body>
+</html>
